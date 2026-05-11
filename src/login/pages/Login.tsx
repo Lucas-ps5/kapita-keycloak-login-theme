@@ -10,7 +10,7 @@ type LoginProps = {
 
 export const Login = (props: LoginProps) => {
     const { kcContext, i18n } = props;
-    const { auth, enableWebAuthnConditionalUI, login, message, messagesPerField, realm, registrationDisabled, url, usernameHidden } = kcContext;
+    const { auth, enableWebAuthnConditionalUI, login, properties, message, messagesPerField, realm, url, usernameHidden } = kcContext;
     const { msg, msgStr } = i18n;
 
     const [isLoginButtonDisabled, setIsLoginButtonDisabled] = useState(false);
@@ -151,15 +151,13 @@ export const Login = (props: LoginProps) => {
                         </div>
                     </div>
 
-                    {realm.password && realm.registrationAllowed && !registrationDisabled && (
-                        <a
-                            tabIndex={8}
-                            href={url.registrationUrl}
-                            className="mt-4 block w-full text-center text-sm text-muted-foreground transition-colors hover:text-primary"
-                        >
-                            {msg("login.register")}
-                        </a>
-                    )}
+                    <a
+                        tabIndex={8}
+                        href={properties.MY_APP_API_URL + "/register"}
+                        className="mt-4 block w-full text-center text-sm text-muted-foreground transition-colors hover:text-primary"
+                    >
+                        {msg("login.register")}
+                    </a>
                 </div>
             </div>
         </main>

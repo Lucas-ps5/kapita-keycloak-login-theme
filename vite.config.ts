@@ -7,7 +7,11 @@ export default defineConfig({
     plugins: [
         react(),
         keycloakify({
-            accountThemeImplementation: "none"
+            accountThemeImplementation: "none",
+            environmentVariables: [
+                { name: "MY_APP_API_URL", default: "http://localhost:5173" },
+                { name: "MY_APP_PALETTE", default: "dracula" }
+            ]
         })
     ]
 });
